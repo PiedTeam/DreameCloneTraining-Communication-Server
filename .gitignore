@@ -1,10 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 client_secret*.json
-/03-csdl-mongo
-/04-TweetProject
-/uploads
-
+node_red
 ### Node ###
 # Logs
 logs
