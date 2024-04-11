@@ -1,13 +1,11 @@
 {
-  "name": "node-red-express-server",
+  "name": "dreame-clone-training-communication-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "start-node-red.js",
   "scripts": {
     "start": "node start-node-red.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
