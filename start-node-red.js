@@ -98,7 +98,7 @@ const __dirname = dirname(__filename);
 
   // Start the runtime
 
-  nodeRedApp.start();
+  await nodeRedApp.start();
 })();
 
 // var flowFile = getMongoInstance(databaseURL)
