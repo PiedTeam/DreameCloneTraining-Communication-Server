@@ -102,5 +102,53 @@
                 "e5e14ccc5c5a51e1"
             ]
         ]
+    },
+    {
+        "id": "e0eda14cd0fc5b8f",
+        "type": "http response",
+        "z": "6d17e4e266b6f154",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ae3e2458b9cefd39",
+        "type": "function",
+        "z": "6d17e4e266b6f154",
+        "name": "function 3",
+        "func": "msg.payload = {\n    \"id\": \"Hoàng Ngọc Thức\",\n    \"title\": \"Ahihi\"\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 80,
+        "wires": [
+            [
+                "e0eda14cd0fc5b8f"
+            ]
+        ]
+    },
+    {
+        "id": "1cea51c83e5c8cf2",
+        "type": "http in",
+        "z": "6d17e4e266b6f154",
+        "name": "",
+        "url": "ahihi",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "ae3e2458b9cefd39"
+            ]
+        ]
     }
 ]

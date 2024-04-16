@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
+  "plugins": ["prettier", "import", "promise"],
+  "ignorePatterns": ["node_modules/", "dist/"],
+  "parserOptions": { "ecmaVersion": 2020 },
+  "extends": [
+    // extends mean shareable config from devDependencies that community have created or recommended
+    // default
+    "eslint:recommended", //@eslint/js
+    "plugin:promise/recommended", //eslint-plugin-promise
+    "plugin:n/recommended", //eslint-plugin-n
+    "plugin:import/recommended", //eslint-plugin-import
+    "prettier" //eslint-CONFIG-prettier === this config only turns **rules** key below off (turn off eslint rules that conflict with prettier), turn on prettier/prettier rules
+  ],
+  "rules": {
+    // extends mean shareable config from devDependencies that community have created or recommended
+    // default
+    "no-unused-vars": "warn",
+    // prettier
+    "prettier/prettier": [
+      "warn",
+      {
+        "usePrettierrc": true
+      }
+    ]
+  }
+}

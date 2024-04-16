@@ -1,52 +1,109 @@
-var http = require('http')
-var express = require('express')
-var nodeRedApp = require('node-red')
+import express from 'express';
+import http from 'http';
+import nodeRedApp from 'node-red';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import { DatabaseService } from './mongoService.js';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
 
-const dotenv = require('dotenv')
-dotenv.config()
-const PORT = process.env.PORT
+dotenv.config();
 
-// Create an Express app
-var app = express()
+const PORT_SERVER = process.env.PORT_SERVER || 4000;
+// environment
+const isProduction = process.env.NODE_ENV === 'production';
+const frontendURL = isProduction ? process.env.PRODUCTION_FRONTEND_URL : process.env.DEVELOPMENT_FRONTEND_URL;
+const databaseURL = isProduction ? process.env.PRODUCTION_DATABASE_URL : process.env.DEVELOPMENT_DATABASE_URL;
+const databaseName = process.env.DATABASE_NAME;
+const databaseCollection = process.env.DATABASE_COLLECTION;
+// cors
+const corsOptions = {
+  origin: frontendURL,
+  credentials: true, // access-control-allow-credentials:true
+  allowedHeaders: ['Content-Type', 'Authorization'], // access-control-allow-headers
+  optionSuccessStatus: 200,
+};
 
-// IMPLEMENT CORS IF YOU WANT TO INTERACT NODE-RED FROM FRONTEND OR OTHER SERVER
-// const cors = require("cors");
-// const corsOptions = {
-//   origin: "http://localhost:3000",
-// };
+// create an express app
+var app = express();
+app.use(cors(corsOptions));
 
-// app.use(cors(corsOptions));
+// create a server
+var server = http.createServer(app);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+// console.log('ahihi __filename');
+// console.log(__filename);
+// console.log('ahihi __dirname');
+// console.log(__dirname);
 
-// Add a simple route for static content served from 'public'
-// app.use('/', express.static('public'))
+// Main
+(async () => {
+  // get latest flow from mongodb
+  const databaseService = new DatabaseService(databaseURL, databaseName, databaseCollection);
+  await databaseService.connect();
+  var flowFile = await databaseService.flowCollection.findOne({}, { sort: { dateLog: -1 } });
+  // replace flow with the latest flow from mongodb
+  fs.writeFileSync(path.join(__dirname, 'flows.json'), JSON.stringify(flowFile.flow, null, 2));
 
-// Create a server
-var server = http.createServer(app)
+  // console.log('ahihi flowFile');
+  // console.log(JSON.stringify(flowFile.flow, null, 2));
 
-// Create the NODE-RED settings object
-var settings = {
-  httpAdminRoot: '/', //đường dẫn để vào trang quản trị (thường mình để /red hoặc /admin)
-  httpNodeRoot: '/api', //đường dẫn mặc định để gọi API
-  userDir: './node_red', //nơi lưu trữ các file cấu hình của Node-Red
-  functionGlobalContext: {}, // enables global context
-  flowFile: './flows.json',
-  flowFilePretty: true,
-  nodesDir: './node_red/nodes'
-}
+  // Create the NODE-RED settings object
+  var settings = {
+    httpAdminRoot: '/', //đường dẫn để vào trang quản trị (thường mình để /red hoặc /admin)
+    httpNodeRoot: '/api', //đường dẫn mặc định để gọi API
+    userDir: './node_red', //nơi lưu trữ các file cấu hình của Node-Red
+    functionGlobalContext: {}, // enables global context
+    flowFile: './flows.json',
+    flowFilePretty: true,
+    nodesDir: './node_red/nodes',
+  };
+  // const flowFilePath = path.join(__dirname, 'flows.json');
+  const flowFilePath = path.join(__dirname, 'flows.json');
+  // add a listener to watch for changes in the flow file
+  await fs.watch(flowFilePath, async (eventType, filename) => {
+    if (eventType === 'rename') {
+      console.log(`File ${filename} has been changed`);
+      // code to handle the change
+      // let latestFile = await databaseService.flowCollection.findOne({}, { sort: { dateLog: -1 } });
 
-// Initialize the runtime with a server and settings
-nodeRedApp.init(server, settings)
+      // if (latestFile != tmpFile) {
+      //   // if there is conflict between mongodb and local file
+      //   console.log('THERE IS CONFLICT BETWEEN MONGODB AND LOCAL FILE, PLEASE FIX IT MANUALLY');
+      //   server.close();
+      // }
 
-// Serve the editor UI from /red
-app.use(settings.httpAdminRoot, nodeRedApp.httpAdmin)
+      // // update the flow in mongodb
+      await databaseService.flowCollection.insertOne({
+        flow: JSON.parse(fs.readFileSync(flowFilePath, 'utf8')),
+        dateLog: new Date().toISOString(),
+      });
+    }
+  });
 
-// Serve the http nodes UI from /api
-app.use(settings.httpNodeRoot, nodeRedApp.httpNode)
+  // Initialize the runtime with a server and settings
+  nodeRedApp.init(server, settings);
 
-server.listen(PORT, () => {
-  console.log(`Node-Red đang chạy trên Port ${PORT}`)
-})
+  // Serve the editor UI from /red
+  app.use(settings.httpAdminRoot, nodeRedApp.httpAdmin);
 
-// Start the runtime
+  // Serve the http nodes UI from /api
+  app.use(settings.httpNodeRoot, nodeRedApp.httpNode);
 
-nodeRedApp.start()
+  server.listen(PORT_SERVER, () => {
+    console.log(`Node-Red server is running on ${PORT_SERVER}`);
+  });
+
+  // Start the runtime
+
+  nodeRedApp.start();
+})();
+
+// var flowFile = getMongoInstance(databaseURL)
+//   .db('flow_node_red')
+//   .collection('flowJSON')
+//   .find()
+//   .sort({ dateField: -1 })
+//   .limit(1);
