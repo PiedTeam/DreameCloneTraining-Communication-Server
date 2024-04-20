@@ -1,0 +1,14 @@
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
+  entry: './src/start-node-red.js',
+  mode: 'production',
+  output: {
+    filename: 'start-node-red.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
