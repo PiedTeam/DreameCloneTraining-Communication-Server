@@ -5,8 +5,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=development node start-node-red.js",
-    "start:prod": "cross-env NODE_ENV=production node start-node-red.js",
+    "start:dev": "cross-env NODE_ENV=development node ./src/start-node-red.js",
+    "start:prod": "cross-env NODE_ENV=production node ./src/start-node-red.js",
     "lint": "yarn run eslint:check && yarn run prettier:check && yarn run check-types",
     "prettier:check": "prettier . --check",
     "prettier:fix": "prettier . --write",
@@ -14,7 +14,6 @@
     "eslint:fix": "eslint . --ext .js,.jsx --max-warnings 0 --fix",
     "eslint:check-allow-warning": "eslint . --ext .ts,.tsx,.js,.jsx",
     "webpack": "webpack --config webpack.config.js",
-    "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch"

@@ -9,7 +9,6 @@ const __dirname = dirname(__filename);
 
 const config = {
   entry: './src/start-node-red.js',
-  exclude: '/node_modules/',
   mode: isProduction ? 'production' : 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
