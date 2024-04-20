@@ -2,7 +2,7 @@
 
 - Tạo server trung gian để Frontend định nghĩa các API cần sử dụng.
 - Backend nhìn theo cấu trúc của Frontend để phát triển API
-![image](https://github.com/nnh53/Node-Red-Express-Server/assets/113448161/0c898be7-1a2d-4c3f-a918-256cad63da6b)
+<img width="881" alt="nodered febe" src="https://github.com/PiedTeam/DreameCloneTraining-Communication-Server/assets/113448161/9032242e-ace0-481e-be16-6ce3a799b8d1">
 
 # Lợi ích
 
