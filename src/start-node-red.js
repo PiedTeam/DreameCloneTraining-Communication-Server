@@ -88,20 +88,18 @@ const __dirname = dirname(__filename);
 
   // Initialize the runtime with a server and settings
   nodeRedApp.init(server, settings);
-
   // Serve the editor UI from /red
   app.use(settings.httpAdminRoot, nodeRedApp.httpAdmin);
 
   // Serve the http nodes UI from /api
   app.use(settings.httpNodeRoot, nodeRedApp.httpNode);
 
+  await nodeRedApp.start();
   server.listen(PORT_SERVER, () => {
     console.log(`Node-Red server is running on ${PORT_SERVER}`);
   });
 
   // Start the runtime
-
-  nodeRedApp.start();
 })();
 
 // var flowFile = getMongoInstance(databaseURL)
