@@ -11,13 +11,14 @@ import path, { dirname } from 'path';
 dotenv.config();
 
 const PORT_SERVER = process.env.PORT_SERVER || 4000;
-// environment
+// ENVIRONMENT VARIABLES
 const isProduction = process.env.NODE_ENV === 'production';
 const frontendURL = isProduction ? process.env.PRODUCTION_FRONTEND_URL : process.env.DEVELOPMENT_FRONTEND_URL;
 const databaseURL = isProduction ? process.env.PRODUCTION_DATABASE_URL : process.env.DEVELOPMENT_DATABASE_URL;
 const databaseName = process.env.DATABASE_NAME;
 const databaseCollection = process.env.DATABASE_COLLECTION;
-// cors
+
+// CORS
 const corsOptions = {
   origin: frontendURL,
   credentials: true, // access-control-allow-credentials:true
@@ -33,12 +34,12 @@ app.use(cors(corsOptions));
 var server = http.createServer(app);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-// console.log('ahihi __filename');
+// console.log('this is __filename');
 // console.log(__filename);
-// console.log('ahihi __dirname');
+// console.log('this is __dirname');
 // console.log(__dirname);
 
-// Main
+// MAIN
 (async () => {
   // get latest flow from mongodb
   const databaseService = new DatabaseService(databaseURL, databaseName, databaseCollection);
@@ -47,7 +48,7 @@ const __dirname = dirname(__filename);
   // replace flow with the latest flow from mongodb
   fs.writeFileSync(path.join(__dirname, 'flows.json'), JSON.stringify(flowFile.flow, null, 2));
 
-  // console.log('ahihi flowFile');
+  // console.log('this is flowFile');
   // console.log(JSON.stringify(flowFile.flow, null, 2));
 
   // Create the NODE-RED settings object
@@ -56,11 +57,11 @@ const __dirname = dirname(__filename);
     httpNodeRoot: '/api', //đường dẫn mặc định để gọi API
     userDir: './node_red', //nơi lưu trữ các file cấu hình của Node-Red
     functionGlobalContext: {}, // enables global context
-    flowFile: './flows.json',
+    flowFile: './src/flows.json',
     flowFilePretty: true,
     nodesDir: './node_red/nodes',
   };
-  // const flowFilePath = path.join(__dirname, 'flows.json');
+
   const flowFilePath = path.join(__dirname, 'flows.json');
   // add a listener to watch for changes in the flow file
   await fs.watch(flowFilePath, async (eventType, filename) => {
