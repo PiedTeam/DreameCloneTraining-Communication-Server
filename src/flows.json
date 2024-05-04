@@ -1,58 +1,250 @@
 [
-    {
-        "id": "6d17e4e266b6f154",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "8ce3cf46f8463f8e",
-        "type": "http in",
-        "z": "6d17e4e266b6f154",
-        "name": "",
-        "url": "arts",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 170,
-        "y": 300,
-        "wires": [
-            [
-                "49552d5cefc78c15"
-            ]
-        ]
-    },
-    {
-        "id": "49552d5cefc78c15",
-        "type": "function",
-        "z": "6d17e4e266b6f154",
-        "name": "function 1",
-        "func": "msg.payload = {\n    \"id\": \"285498f5-3486-434d-a459-bedb6bcea7ce\",\n    \"title\": \"Math Quizz\",\n    \"description\": \"Childrens, You must do this quizz by yourself. Becareful, we have some question with multiple choice in this test.\",\n    \"lsQuizz\": {\n        \"48c9945c-c048-4cdc-99c3-249c4a320386\": {\n            \"id\": \"48c9945c-c048-4cdc-99c3-249c4a320386\",\n            \"content\": \"5 + 3 = ?\",\n            \"isMutiple\": false,\n            \"answer\": [\n                { \"id\": \"9b8da931-b66c-4ab5-8508-c324c12c6160\", \"content\": \"2\" },\n                { \"id\": \"ed6c7f93-2aa2-4c6b-9ce3-9ccc6fe0d878\", \"content\": \"4\" },\n                { \"id\": \"41023bff-94d2-46b3-9fae-24f4ed65aff5\", \"content\": \"6\" },\n                { \"id\": \"e59a4d41-19f8-44b5-aa42-92058fb6cee9\", \"content\": \"8\" }\n            ]\n        },\n        \"46229c41-b896-493b-b32b-d890115efc3e\": {\n            \"id\": \"46229c41-b896-493b-b32b-d890115efc3e\",\n            \"content\": \"10 * 2 = ?\",\n            \"isMutiple\": false,\n            \"answer\": [\n                { \"id\": \"c3fd23b1-527f-4fde-9750-ec9eb8164330\", \"content\": \"20\" },\n                { \"id\": \"9e617aaa-eb6f-47ad-8318-0b45398b7360\", \"content\": \"15\" },\n                { \"id\": \"c2cd4d66-d977-46ff-8128-5c669fcb1357\", \"content\": \"10\" },\n                { \"id\": \"a703b001-80b1-442e-83ce-e20f1102f023\", \"content\": \"30\" }\n            ]\n        },\n        \"2ce23d6a-64ee-4ba8-8cd6-1fc1a0a09e79\": {\n            \"id\": \"2ce23d6a-64ee-4ba8-8cd6-1fc1a0a09e79\",\n            \"content\": \"5 + 2 = ?\",\n            \"isMutiple\": true,\n            \"answer\": [\n                { \"id\": \"bfd34144-1e1b-47a6-a0c4-2e5933a601ce\", \"content\": \"10 - 3\" },\n                { \"id\": \"9752b1c3-8e06-4992-b35e-1ec731026b27\", \"content\": \"15 - 6\" },\n                { \"id\": \"03c001dd-f3fe-4ed6-92dd-8c14b3e70aba\", \"content\": \"3 + 4\" },\n                { \"id\": \"515fddec-ced3-40ea-b1df-4571db6650eb\", \"content\": \"2 + 10\" }\n            ]\n        }\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 360,
-        "wires": [
-            [
-                "978d6bf2c6a6edee"
-            ]
-        ]
-    },
-    {
-        "id": "978d6bf2c6a6edee",
-        "type": "http response",
-        "z": "6d17e4e266b6f154",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 630,
-        "y": 300,
-        "wires": []
-    }
+  {
+    "id": "6d17e4e266b6f154",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "8ce3cf46f8463f8e",
+    "type": "http in",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "url": "test",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 170,
+    "y": 400,
+    "wires": [
+      [
+        "49552d5cefc78c15"
+      ]
+    ]
+  },
+  {
+    "id": "49552d5cefc78c15",
+    "type": "function",
+    "z": "6d17e4e266b6f154",
+    "name": "function 1",
+    "func": "msg.payload = {\n    \"id\": \"285498f5-3486-434d-a459-bedb6bcea7ce\",\n    \"title\": \"Math Quizz\",\n    \"description\": \"Childrens, You must do this quizz by yourself. Becareful, we have some question with multiple choice in this test.\",\n    \"lsQuizz\": {\n        \"48c9945c-c048-4cdc-99c3-249c4a320386\": {\n            \"id\": \"48c9945c-c048-4cdc-99c3-249c4a320386\",\n            \"content\": \"5 + 3 = ?\",\n            \"isMutiple\": false,\n            \"answer\": [\n                { \"id\": \"9b8da931-b66c-4ab5-8508-c324c12c6160\", \"content\": \"2\" },\n                { \"id\": \"ed6c7f93-2aa2-4c6b-9ce3-9ccc6fe0d878\", \"content\": \"4\" },\n                { \"id\": \"41023bff-94d2-46b3-9fae-24f4ed65aff5\", \"content\": \"6\" },\n                { \"id\": \"e59a4d41-19f8-44b5-aa42-92058fb6cee9\", \"content\": \"8\" }\n            ]\n        },\n        \"46229c41-b896-493b-b32b-d890115efc3e\": {\n            \"id\": \"46229c41-b896-493b-b32b-d890115efc3e\",\n            \"content\": \"10 * 2 = ?\",\n            \"isMutiple\": false,\n            \"answer\": [\n                { \"id\": \"c3fd23b1-527f-4fde-9750-ec9eb8164330\", \"content\": \"20\" },\n                { \"id\": \"9e617aaa-eb6f-47ad-8318-0b45398b7360\", \"content\": \"15\" },\n                { \"id\": \"c2cd4d66-d977-46ff-8128-5c669fcb1357\", \"content\": \"10\" },\n                { \"id\": \"a703b001-80b1-442e-83ce-e20f1102f023\", \"content\": \"30\" }\n            ]\n        },\n        \"2ce23d6a-64ee-4ba8-8cd6-1fc1a0a09e79\": {\n            \"id\": \"2ce23d6a-64ee-4ba8-8cd6-1fc1a0a09e79\",\n            \"content\": \"5 + 2 = ?\",\n            \"isMutiple\": true,\n            \"answer\": [\n                { \"id\": \"bfd34144-1e1b-47a6-a0c4-2e5933a601ce\", \"content\": \"10 - 3\" },\n                { \"id\": \"9752b1c3-8e06-4992-b35e-1ec731026b27\", \"content\": \"15 - 6\" },\n                { \"id\": \"03c001dd-f3fe-4ed6-92dd-8c14b3e70aba\", \"content\": \"3 + 4\" },\n                { \"id\": \"515fddec-ced3-40ea-b1df-4571db6650eb\", \"content\": \"2 + 10\" }\n            ]\n        }\n    }\n}\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 400,
+    "y": 400,
+    "wires": [
+      [
+        "978d6bf2c6a6edee"
+      ]
+    ]
+  },
+  {
+    "id": "978d6bf2c6a6edee",
+    "type": "http response",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 630,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "1d4089a15ecc5f28",
+    "type": "http in",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "url": "product/en/new",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 210,
+    "y": 40,
+    "wires": [
+      [
+        "e4d0a6a06b229c05"
+      ]
+    ]
+  },
+  {
+    "id": "e4d0a6a06b229c05",
+    "type": "function",
+    "z": "6d17e4e266b6f154",
+    "name": "function 2",
+    "func": "msg.payload = [\n  {\n    \"_id\": \"6634f1c445b180aaa42efb7c\",\n    \"id\": \"1\",\n    \"name\": \"PowerSweep 1000\",\n    \"model\": \"PS1000\",\n    \"description\": \"High-performance vacuum cleaner for household use.\",\n    \"price\": \"$99.99\",\n    \"stock_quantity\": \"50\",\n    \"warranty\": \"1 year\",\n    \"weight\": \"5.5 kg\",\n    \"dimensions\": \"12x12x48\",\n    \"power\": \"1200W\",\n    \"color\": \"Blue\",\n    \"manufacturer\": \"CleanCo\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb7d\",\n    \"id\": \"2\",\n    \"name\": \"TurboClean 2000\",\n    \"model\": \"TC2000\",\n    \"description\": \"Advanced vacuum cleaner with turbo suction technology.\",\n    \"price\": \"$149.99\",\n    \"stock_quantity\": \"30\",\n    \"warranty\": \"2 years\",\n    \"weight\": \"6.2 kg\",\n    \"dimensions\": \"14x14x50\",\n    \"power\": \"1500W\",\n    \"color\": \"Red\",\n    \"manufacturer\": \"HomeTech\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb7e\",\n    \"id\": \"3\",\n    \"name\": \"EcoVac 3000\",\n    \"model\": \"EV3000\",\n    \"description\": \"Environmentally friendly vacuum cleaner with HEPA filter.\",\n    \"price\": \"$199.99\",\n    \"stock_quantity\": \"20\",\n    \"warranty\": \"3 years\",\n    \"weight\": \"7.0 kg\",\n    \"dimensions\": \"15x15x52\",\n    \"power\": \"1800W\",\n    \"color\": \"Green\",\n    \"manufacturer\": \"GreenClean\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb7f\",\n    \"id\": \"4\",\n    \"name\": \"PetMaster Pro\",\n    \"model\": \"PMPro\",\n    \"description\": \"Specifically designed for pet hair removal.\",\n    \"price\": \"$129.99\",\n    \"stock_quantity\": \"40\",\n    \"warranty\": \"2 years\",\n    \"weight\": \"6.5 kg\",\n    \"dimensions\": \"13x13x49\",\n    \"power\": \"1400W\",\n    \"color\": \"Yellow\",\n    \"manufacturer\": \"PetCare\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb80\",\n    \"id\": \"5\",\n    \"name\": \"AllergyGuard 400\",\n    \"model\": \"AG400\",\n    \"description\": \"Ideal for allergy sufferers with anti-allergen technology.\",\n    \"price\": \"$179.99\",\n    \"stock_quantity\": \"25\",\n    \"warranty\": \"3 years\",\n    \"weight\": \"6.8 kg\",\n    \"dimensions\": \"14x14x51\",\n    \"power\": \"1600W\",\n    \"color\": \"White\",\n    \"manufacturer\": \"HealthClean\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb81\",\n    \"id\": \"6\",\n    \"name\": \"DustEater Elite\",\n    \"model\": \"DEElite\",\n    \"description\": \"High-capacity dust collection for large homes.\",\n    \"price\": \"$219.99\",\n    \"stock_quantity\": \"15\",\n    \"warranty\": \"5 years\",\n    \"weight\": \"7.5 kg\",\n    \"dimensions\": \"16x16x54\",\n    \"power\": \"2000W\",\n    \"color\": \"Black\",\n    \"manufacturer\": \"DustMaster\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb82\",\n    \"id\": \"7\",\n    \"name\": \"AutoSweep Plus\",\n    \"model\": \"ASP\",\n    \"description\": \"Robotic vacuum cleaner with AI navigation.\",\n    \"price\": \"$299.99\",\n    \"stock_quantity\": \"10\",\n    \"warranty\": \"2 years\",\n    \"weight\": \"5.0 kg\",\n    \"dimensions\": \"12x12x46\",\n    \"power\": \"1300W\",\n    \"color\": \"Silver\",\n    \"manufacturer\": \"SmartHome\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb83\",\n    \"id\": \"8\",\n    \"name\": \"UltraVac Max\",\n    \"model\": \"UVM\",\n    \"description\": \"Maximum power and versatility for heavy-duty cleaning.\",\n    \"price\": \"$249.99\",\n    \"stock_quantity\": \"20\",\n    \"warranty\": \"4 years\",\n    \"weight\": \"8.0 kg\",\n    \"dimensions\": \"17x17x56\",\n    \"power\": \"2200W\",\n    \"color\": \"Gray\",\n    \"manufacturer\": \"MegaClean\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb84\",\n    \"id\": \"9\",\n    \"name\": \"HandiSweep Mini\",\n    \"model\": \"HSM\",\n    \"description\": \"Compact handheld vacuum cleaner for quick cleanups.\",\n    \"price\": \"$49.99\",\n    \"stock_quantity\": \"50\",\n    \"warranty\": \"1 year\",\n    \"weight\": \"2.0 kg\",\n    \"dimensions\": \"8x8x14\",\n    \"power\": \"800W\",\n    \"color\": \"Purple\",\n    \"manufacturer\": \"HandyClean\"\n  },\n  {\n    \"_id\": \"6634f1c445b180aaa42efb85\",\n    \"id\": \"10\",\n    \"name\": \"FreshAir Pro\",\n    \"model\": \"FAP\",\n    \"description\": \"Air purifier and vacuum combo for fresh, clean air.\",\n    \"price\": \"$349.99\",\n    \"stock_quantity\": \"10\",\n    \"warranty\": \"5 years\",\n    \"weight\": \"9.5 kg\",\n    \"dimensions\": \"18x18x60\",\n    \"power\": \"2400W\",\n    \"color\": \"Blue\",\n    \"manufacturer\": \"AirPure\"\n  }\n]\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 500,
+    "y": 80,
+    "wires": [
+      [
+        "d4c7ccfa5fd75111"
+      ]
+    ]
+  },
+  {
+    "id": "d4c7ccfa5fd75111",
+    "type": "http response",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 630,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "c1e9751fd242a09f",
+    "type": "http in",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "url": "product/status",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 200,
+    "y": 340,
+    "wires": [
+      [
+        "27466ad377237f72"
+      ]
+    ]
+  },
+  {
+    "id": "27466ad377237f72",
+    "type": "function",
+    "z": "6d17e4e266b6f154",
+    "name": "function 3",
+    "func": "msg.payload = {\n    \"id\": \"285498f5-3486-434d-a459-bedb6bcea7ce\",\n    \"title\": \"Math Quizz\",\n    \"description\": \"Childrens, You must do this quizz by yourself. Becareful, we have some question with multiple choice in this test.\",\n    \"lsQuizz\": {\n        \"48c9945c-c048-4cdc-99c3-249c4a320386\": {\n            \"id\": \"48c9945c-c048-4cdc-99c3-249c4a320386\",\n            \"content\": \"5 + 3 = ?\",\n            \"isMutiple\": false,\n            \"answer\": [\n                { \"id\": \"9b8da931-b66c-4ab5-8508-c324c12c6160\", \"content\": \"2\" },\n                { \"id\": \"ed6c7f93-2aa2-4c6b-9ce3-9ccc6fe0d878\", \"content\": \"4\" },\n                { \"id\": \"41023bff-94d2-46b3-9fae-24f4ed65aff5\", \"content\": \"6\" },\n                { \"id\": \"e59a4d41-19f8-44b5-aa42-92058fb6cee9\", \"content\": \"8\" }\n            ]\n        },\n        \"46229c41-b896-493b-b32b-d890115efc3e\": {\n            \"id\": \"46229c41-b896-493b-b32b-d890115efc3e\",\n            \"content\": \"10 * 2 = ?\",\n            \"isMutiple\": false,\n            \"answer\": [\n                { \"id\": \"c3fd23b1-527f-4fde-9750-ec9eb8164330\", \"content\": \"20\" },\n                { \"id\": \"9e617aaa-eb6f-47ad-8318-0b45398b7360\", \"content\": \"15\" },\n                { \"id\": \"c2cd4d66-d977-46ff-8128-5c669fcb1357\", \"content\": \"10\" },\n                { \"id\": \"a703b001-80b1-442e-83ce-e20f1102f023\", \"content\": \"30\" }\n            ]\n        },\n        \"2ce23d6a-64ee-4ba8-8cd6-1fc1a0a09e79\": {\n            \"id\": \"2ce23d6a-64ee-4ba8-8cd6-1fc1a0a09e79\",\n            \"content\": \"5 + 2 = ?\",\n            \"isMutiple\": true,\n            \"answer\": [\n                { \"id\": \"bfd34144-1e1b-47a6-a0c4-2e5933a601ce\", \"content\": \"10 - 3\" },\n                { \"id\": \"9752b1c3-8e06-4992-b35e-1ec731026b27\", \"content\": \"15 - 6\" },\n                { \"id\": \"03c001dd-f3fe-4ed6-92dd-8c14b3e70aba\", \"content\": \"3 + 4\" },\n                { \"id\": \"515fddec-ced3-40ea-b1df-4571db6650eb\", \"content\": \"2 + 10\" }\n            ]\n        }\n    }\n}\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 340,
+    "wires": [
+      [
+        "0059a412233b05b1"
+      ]
+    ]
+  },
+  {
+    "id": "0059a412233b05b1",
+    "type": "http response",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 630,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "b1bd973b0e197ced",
+    "type": "http in",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "url": "product/en/update",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 210,
+    "y": 140,
+    "wires": [
+      [
+        "5567c7367d478dd5"
+      ]
+    ]
+  },
+  {
+    "id": "5567c7367d478dd5",
+    "type": "function",
+    "z": "6d17e4e266b6f154",
+    "name": "function 4",
+    "func": "msg.payload = [\n  {\n    id: {\n      newValue: 1,\n      oldValue: 1,\n    },\n    name: {\n      newValue: 'PowerSweep 1000',\n      oldValue: 'PowerSweep 1000',\n    },\n    model: {\n      newValue: 'PS1000',\n      oldValue: 'PS1000',\n    },\n    description: {\n      newValue: 'Basic vacuum cleaner with powerful suction.',\n      oldValue: 'Basic vacuum cleaner with powerful suction.',\n    },\n    price: {\n      newValue: 99.99,\n      oldValue: 89.0,\n    },\n    stock_quantity: {\n      newValue: 50,\n      oldValue: 30,\n    },\n    warranty: {\n      newValue: '1 year',\n      oldValue: '2 year',\n    },\n    weight: {\n      newValue: '5.5 kg',\n      oldValue: '4.7 kg',\n    },\n    dimensions: {\n      newValue: '12x12x48',\n      oldValue: '12x12x48',\n    },\n    power: {\n      newValue: '1200W',\n      oldValue: '1300W',\n    },\n    color: {\n      newValue: 'Orange',\n      oldValue: 'Orange',\n    },\n    manufacturer: {\n      newValue: 'PowerClean',\n      oldValue: 'PowerClean',\n    },\n  },\n  {\n    id: {\n      newValue: 2,\n      oldValue: 12,\n    },\n    name: {\n      newValue: 'TurboClean 2001',\n      oldValue: 'TurboClean 2000',\n    },\n    model: {\n      newValue: 'TC2200',\n      oldValue: 'TC2000',\n    },\n    description: {\n      newValue: 'Advanced vacuum cleaner with turbo brush attachment.',\n      oldValue: 'Advanced vacuum cleaner with turbo brush attachment.',\n    },\n    price: {\n      newValue: 139.99,\n      oldValue: 149.99,\n    },\n    stock_quantity: {\n      newValue: 30,\n      oldValue: 20,\n    },\n    warranty: {\n      newValue: '2 years',\n      oldValue: '3 years',\n    },\n    weight: {\n      newValue: '6.0 kg',\n      oldValue: '6.2 kg',\n    },\n    dimensions: {\n      newValue: '14x14x50',\n      oldValue: '14x14x50',\n    },\n    power: {\n      newValue: '1600W',\n      oldValue: '1500W',\n    },\n    color: {\n      newValue: 'Red',\n      oldValue: 'Red',\n    },\n    manufacturer: {\n      newValue: 'TurboHome',\n      oldValue: 'HomeTech',\n    },\n  },\n  {\n    id: {\n      newValue: 3,\n      oldValue: 12,\n    },\n    name: {\n      newValue: 'GreenClean EV3000',\n      oldValue: 'EcoVac 3000',\n    },\n    model: {\n      newValue: 'GCEV3000',\n      oldValue: 'GCEV3000',\n    },\n    description: {\n      newValue: 'Environmentally friendly vacuum cleaner with energy-saving mode.',\n      oldValue: 'Environmentally friendly vacuum cleaner with HEPA filter.',\n    },\n    price: {\n      newValue: 199.99,\n      oldValue: 199.99,\n    },\n    stock_quantity: {\n      newValue: 20,\n      oldValue: 40,\n    },\n    warranty: {\n      newValue: '3 years',\n      oldValue: '2 years',\n    },\n    weight: {\n      newValue: '6.3 kg',\n      oldValue: '7.0 kg',\n    },\n    dimensions: {\n      newValue: '15x15x52',\n      oldValue: '15x15x52',\n    },\n    power: {\n      newValue: '1800W',\n      oldValue: '1800W',\n    },\n    color: {\n      newValue: 'Green',\n      oldValue: 'Green',\n    },\n    manufacturer: {\n      newValue: 'EcoTech',\n      oldValue: 'GreenClean',\n    },\n  },\n  {\n    id: {\n      newValue: 4,\n      oldValue: 12,\n    },\n    name: {\n      newValue: 'PetMaster Pro',\n      oldValue: 'PetMaster Pro',\n    },\n    model: {\n      newValue: 'PMP',\n      oldValue: 'PMP',\n    },\n    description: {\n      newValue: 'Designed for pet owners with specialized pet hair attachment.',\n      oldValue: 'Designed for pet owners with specialized pet hair attachment.',\n    },\n    price: {\n      newValue: 129.99,\n      oldValue: 129.99,\n    },\n    stock_quantity: {\n      newValue: 40,\n      oldValue: 200,\n    },\n    warranty: {\n      newValue: '2 years',\n      oldValue: '1 year',\n    },\n    weight: {\n      newValue: '5.8 kg',\n      oldValue: '6.5 kg',\n    },\n    dimensions: {\n      newValue: '13x13x49',\n      oldValue: '13x13x49',\n    },\n    power: {\n      newValue: '1400w',\n      oldValue: '1500W',\n    },\n    color: {\n      newValue: 'Gray',\n      oldValue: 'Yellow',\n    },\n    manufacturer: {\n      newValue: 'PetClean',\n      oldValue: 'PetClean',\n    },\n  },\n];\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 140,
+    "wires": [
+      [
+        "3851f94235ba3c3b"
+      ]
+    ]
+  },
+  {
+    "id": "3851f94235ba3c3b",
+    "type": "http response",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 630,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "327266fd4a8ff1db",
+    "type": "http in",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "url": "product/en/error",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 210,
+    "y": 220,
+    "wires": [
+      [
+        "a4399bece108f356"
+      ]
+    ]
+  },
+  {
+    "id": "a4399bece108f356",
+    "type": "function",
+    "z": "6d17e4e266b6f154",
+    "name": "function 5",
+    "func": "msg.payload = []\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 220,
+    "wires": [
+      [
+        "79257063e040aafd"
+      ]
+    ]
+  },
+  {
+    "id": "79257063e040aafd",
+    "type": "http response",
+    "z": "6d17e4e266b6f154",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 630,
+    "y": 220,
+    "wires": []
+  }
 ]

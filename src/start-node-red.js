@@ -55,17 +55,19 @@ const __dirname = dirname(__filename);
   var settings = {
     httpAdminRoot: '/', //đường dẫn để vào trang quản trị (thường mình để /red hoặc /admin)
     httpNodeRoot: '/api', //đường dẫn mặc định để gọi API
-    userDir: './node_red', //nơi lưu trữ các file cấu hình của Node-Red
+    userDir: './src/node_red', //nơi lưu trữ các file cấu hình của Node-Red
     functionGlobalContext: {}, // enables global context
     flowFile: './src/flows.json',
     flowFilePretty: true,
     nodesDir: './node_red/nodes',
+    credentialSecret: 'ahihi',
   };
 
   const flowFilePath = path.join(__dirname, 'flows.json');
   // add a listener to watch for changes in the flow file
-  await fs.watch(flowFilePath, async (eventType, filename) => {
-    if (eventType === 'rename') {
+  fs.watch(flowFilePath, async (eventType, filename) => {
+    console.log(`eventType is ${eventType}`);
+    if (eventType != null) {
       console.log(`File ${filename} has been changed`);
       // code to handle the change
       // let latestFile = await databaseService.flowCollection.findOne({}, { sort: { dateLog: -1 } });
